@@ -11,7 +11,24 @@ import Footer from './Components/Navbar/Footer.jsx'
 function App() {
   const [count, setCount] = useState(0)
 
-  
+  return(
+    <>
+    <div className="App">
+      <UploadButton />
+    </div>
+   <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Navbar />
+      
+      {/* Main Content Area */}
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        {/*<h1>Welcome to the Dashboard</h1>*/}
+        {/* Your other page components go here */}
+      </Box>
+
+      <Footer />
+    </Box>
+    </>
+  )
   
 }
 
