@@ -12,7 +12,7 @@ const Footer = () => {
         backgroundColor: '#6366f1', // A slightly darker teal than the Navbar for contrast
         color: 'white',
         py: 6, // Padding top and bottom
-        mt: 'auto', // Pushes the footer to the bottom of the page
+        mt: 'bottom', // Pushes the footer to the bottom of the page
       }}
     >
       <Container maxWidth="lg">
