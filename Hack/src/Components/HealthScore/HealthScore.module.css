@@ -1,0 +1,115 @@
+
+.healthScore {
+    position: relative;
+    width: 20vw;
+    height: 85vh;
+    top: 10vh;
+    left: 78vw;
+    border: 1px solid hsla(0, 0%, 0%, 0.1);
+    box-sizing: border-box;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #e0e7ff;
+}
+
+.donutWrapper {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.svg {
+  transform: rotate(-90deg);
+}
+
+.bg {
+  fill: none;
+  stroke: #e5e5e5;
+  stroke-width: 10;
+}
+
+.progress {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease, stroke 0.4s ease;
+}
+
+.text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.text span {
+  font-size: 16px;
+  color: #666;
+}
+
+.healthExplanation {
+  position: absolute;
+  top: 190px; /* below donut */
+  padding: 0 12px;
+  text-align: center ;
+}
+
+.healthExplanation h4 {
+  margin: 0 0 6px;
+  font-size: 28.8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.healthExplanation p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.analyseBtn {
+    width: 180px;
+    height: 60px;
+  position: absolute;
+  top: 70vh; /* adjust if needed */
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 10px 18px;
+  font-size: 18px;
+  font-weight: 500;
+
+  background-color: #6366f1;
+  color: #ffffff;
+
+  border: 1px solid hsla(0, 0%, 0%, 0.25);
+  border-radius: 40px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease,
+    border-color 0.6s ease;
+}
+
+.analyseBtn:hover {
+  background-color: #c7d2fe; /* calm green */
+  color: #333;
+  border-color: #6366f1;
+}
+
+.analyseBtn:active {
+  background-color: #7189fc; /* slightly darker on click */
+  border-color: #5048e7;
+}
