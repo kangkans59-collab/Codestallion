@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="" element={<Home/>}/>
-        <Route path="/Temporary-Analytics" element={<TempAnaly/>}/>
+        <Route path="/result/:fileId" element={<TempAnaly/>}/>
       </Routes>
     </BrowserRouter>
     </>

@@ -3,15 +3,83 @@ import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import styles from './UploadButton.module.css'; 
+import { useNavigate } from "react-router-dom";
 
 const UploadButton = () => {
+
+  const navigate = useNavigate();
+
   const [selectedFile, setSelectedFile] = useState(null);
+  const [status, setStatus] = useState("");
+  const [fileId, setFileId] = useState(null);
+  const [analysis, setAnalysis] = useState(null);
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setSelectedFile(event.target.files[0]);
+
+      const file = event.target.files[0];
+
+      setSelectedFile(file);
+
+      // 🔥 Upload immediately
+      uploadFile(file);
     }
   };
+  const uploadFile = async (file) => {
+  setStatus("Uploading...");
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const res = await fetch("http://127.0.0.1:8000/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setFileId(data.file_id);
+      navigate(`/result/${data.file_id}`);
+      setStatus("Upload successful!");
+      analyzeFile(data.file_id);
+    } else {
+      setStatus("Upload failed");
+      console.error(data);
+    }
+
+  } catch (err) {
+    console.error(err);
+    setStatus("Server error");
+  }
+};
+
+  const analyzeFile = async (id) => {
+  setStatus("Analyzing report...");
+
+  try {
+    const res = await fetch(
+      `http://127.0.0.1:8000/api/analyze/${id}`
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("Analysis Result:", data);
+
+      setAnalysis(data); // Save JSON
+      setStatus("Analysis complete!");
+    } else {
+      console.error(data);
+      setStatus("Analysis failed");
+    }
+
+  } catch (err) {
+    console.error(err);
+    setStatus("Server error during analysis");
+  }
+};
 
   return (
     <div className={styles.heroContainer}>
@@ -75,6 +143,20 @@ const UploadButton = () => {
             )}
           </div>
           
+          {/* Upload Status */}
+          {status && (
+            <p style={{ marginTop: "10px", color: "#555" }}>
+              {status}
+            </p>
+          )}
+
+          {/* File ID */}
+          {fileId && (
+            <p style={{ fontSize: "12px", color: "#888" }}>
+              File ID: {fileId}
+            </p>
+          )}
+
           <p className={styles.disclaimer}>
             <strong>Disclaimer:</strong> This tool is for educational purposes only and does not diagnose conditions or recommend treatments. Always consult your doctor for clinical decisions. Please use anonymized data.
           </p>

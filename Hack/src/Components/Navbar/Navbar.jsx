@@ -6,7 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Navbar = () => {
   return (
     // The sx prop allows you to easily apply custom CSS directly to MUI components
-    <AppBar position="static" sx={{ backgroundColor: '#6366f1' }}> 
+    <AppBar position="fixed" sx={{ backgroundColor: '#6366f1', top: 0, width: '100%', zIndex:1200, }}> 
       <Toolbar>
         {/* Medical Logo / Icon */}
         <IconButton size="large" edge="start" color="inherit" aria-label="logo" sx={{ mr: 1 }}>
@@ -21,7 +21,7 @@ const Navbar = () => {
         {/* Navigation Links */}
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Button color="inherit">Home</Button>
-          <Button color="inherit">Services</Button>
+          <Button color="inherit">Analytics</Button>
           <Button color="inherit">Contact</Button>
 
           <IconButton

@@ -7,19 +7,17 @@ export default function TempAnaly() {
     return (
         <div className="TempAnaly" 
             style={{
-                minHeight:"100vh",
+                minHeight:"100%",
                 display: "grid",
                 gridTemplateRows: "auto 1fr auto",
             }}
         >
             <Navbar />
-
-            <main>
             <ResultBox />
             {/* <HealthScore /> */}
-            </main>
+            
 
-            <Footer />
+        
         </div>
     )
 
